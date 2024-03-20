@@ -81,7 +81,6 @@
 
 <body>
 <img class="title" src="imgs/popcat.svg" alt="POPCAT">
-
 <div class="cat-img" id="p"></div>
 
 <script>
@@ -93,16 +92,24 @@
         popcat_counter++;
         cat.innerText=popcat_counter;
         cat.id="op";
+        let pop_sound =new Audio("pops/pop1.mp3");
+        pop_sound.load();
+        pop_sound.play();
     }
 
     let close_popcat=function(){
         cat.id="p";
     }
+    //停50sec(兩種方法各以25sec為例)
+    let p_func =function (){
+        setTimeout(close_popcat,25);
+    }
+    close_popcat=()=>setTimeout(()=>cat.id="p",25)
 
     document.addEventListener("keydown", open_popcat)
     document.addEventListener("pointerdown", open_popcat)
-    document.addEventListener("keyup", close_popcat)
-    document.addEventListener("pointerup", close_popcat)
+    document.addEventListener("keyup", p_func)
+    document.addEventListener("pointerup", p_func)
 </script>
 </body>
 </html>
